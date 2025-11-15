@@ -5,20 +5,18 @@
   }
 
 :root {
-    --mainBlue: #2135A6;
+    --primary-blue: #5450CA;
+    --secondary-blue: #3733AA;
     --mainOrange: #13bd27;
     --mainRed: #c92b2b;
     --mainWhite: #d9edd7;
     --mainBlack: #292524;
-}
-
-:focus {
-  outline: none;
-  border: 2px solid var(--mainRed);
-
+    --primary-purple: #783EC3;
+    --secondary-purple: #4D277E;
+    --primary-black: #0A1015;
 }
 
 body {
-  background-color: var(--mainBlue);
+  background-color: var(--primary-purple);
 }
 

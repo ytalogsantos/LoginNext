@@ -4,9 +4,9 @@ import { montserrat } from "@/app/layout";
 export default function LoginForm() {
     return (
         <>
-        <h1>Login</h1>
-        <div>
-            <form className={styles.loginForm}>
+        <div className={styles.loginForm}>
+            <form>
+                <h1>Login</h1>
                 <div>
                     <label htmlFor="email" className={montserrat.className}>Email </label>
                     <input type="email" name="email" id="email-input" required placeholder="youremail@something.com" className={montserrat.className}/>
