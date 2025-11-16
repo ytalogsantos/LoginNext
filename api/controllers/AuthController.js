@@ -1,11 +1,9 @@
-import user from "@/models/User.js";
-import jwt from "jsonwebtoken";
+import user from "@/api/models/User.js";
 import bcrypt from "bcryptjs";
 
 class AuthController {
     static async login(req) {
         try {
-            const JWT_SECRET = process.env.JWT_SECRET;
             const { email, password } = await req.json();
 
             if (!email || !password) {
@@ -24,21 +22,7 @@ class AuthController {
                 return Response.json({ message: "Senha inválida." }), {status: 401};
             }
 
-            const token = jwt.sign(
-                { id: foundUser._id },
-                JWT_SECRET,
-                { expiresIn: "5m" }
-            );
-
-            return Response.json({
-                message: "Login realizado com sucesso.",
-                status: 200,
-                token,
-                user: {
-                    id: foundUser._id,
-                    email: foundUser.email
-                }
-            });
+            return Response.json({message: "Login realizado com sucesso."});
         } catch (err) {
             return Response.json({ message: `erro ao realizar login ${err.message}`, status: 500});
         }
@@ -46,7 +30,6 @@ class AuthController {
 
     static async register(req) {
         try {
-            const JWT_SECRET = process.env.JWT_SECRET;
             const { email, password } = await req.json();
 
             if (!email || !password) {
