@@ -1,3 +1,3 @@
-export async function Page() {
-    return <p>Registration page</p>;
+export default function Page(){
+    return<p>Registration page.</p>;
 }
