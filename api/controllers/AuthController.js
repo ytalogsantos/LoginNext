@@ -3,25 +3,25 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
 class AuthController {
-    static async login(req, res) {
+    static async login(req) {
         try {
             const JWT_SECRET = process.env.JWT_SECRET;
-            const { email, password } = req.body;
+            const { email, password } = await req.json();
 
             if (!email || !password) {
-                return res.status(400).json({ message: "Preencha todos campos." });
+                return Response.json({ message: "Preencha todos campos." }, {status: 400});
             }
 
             const foundUser = await user.findOne({ email: email }).exec();
 
             if (!foundUser) {
-                return res.status(404).json({ message: "Usuário não cadastrado." });
+                return Response.json({ message: "Usuário não cadastrado." }, {status: 404});
             }
 
             const isPasswordCorrect = await bcrypt.compare(password, foundUser.password);
 
             if (!isPasswordCorrect) {
-                return res.status(401).json({ message: "Senha inválida." });
+                return Response.json({ message: "Senha inválida." }), {status: 401};
             }
 
             const token = jwt.sign(
@@ -30,8 +30,9 @@ class AuthController {
                 { expiresIn: "5m" }
             );
 
-            return res.status(200).json({
+            return Response.json({
                 message: "Login realizado com sucesso.",
+                status: 200,
                 token,
                 user: {
                     id: foundUser._id,
@@ -39,31 +40,31 @@ class AuthController {
                 }
             });
         } catch (err) {
-            return req.res(500).json({ message: `erro ao realizar login ${err.message}` });
+            return Response.json({ message: `erro ao realizar login ${err.message}`, status: 500});
         }
     }
 
-    static async register(req, res) {
+    static async register(req) {
         try {
             const JWT_SECRET = process.env.JWT_SECRET;
-            const { email, password } = req.body;
+            const { email, password } = await req.json();
 
             if (!email || !password) {
-                return res.status(400).json({ message: "Preencha todos os campos." });
+                return Response.json({ message: "Preencha todos os campos.", status: 400 });
             }
 
             const foundUser = await user.findOne({ email: email }).exec();
 
             if (foundUser) {
-                return res.status(400).json({ message: "Email associado à outro usuário" });
+                return Response.json({ message: "Email associado à outro usuário", status: 400 });
             }
 
-            const newUser = await user.create({ username, email, password });
+            await user.create({ username, email, password });
 
-            return res.status(201).json({ message: "Usuário cadastrado com sucesso." });
+            return Response.json({ message: "Usuário cadastrado com sucesso.", status: 200 });
 
         } catch (err) {
-            return res.status(500).json({ message: `Erro ao realizar cadastro: ${err.message}` });
+            return Response.json({ message: `Erro ao realizar cadastro: ${err.message}`, status: 500 });
         }
 
     }
