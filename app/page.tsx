@@ -1,3 +1,3 @@
-export default function Home() {
+export async function Home() {
   return <p>Testing</p>;
 }
