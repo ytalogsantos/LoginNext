@@ -44,7 +44,7 @@ export default function LoginForm() {
                 </div>
                 <div>
                     <button type="submit" className={montserrat.className}>Log in</button>
-                    <button className={montserrat.className}>Forgot password?</button>
+                    <button className={montserrat.className}>Forget password?</button>
                     <button className={montserrat.className}>Sign up</button>
                 </div>
 
