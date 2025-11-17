@@ -1,4 +1,4 @@
-import LoginForm from "@/app/ui/LoginForm";
+import SignupForm from "@/app/ui/SignupForm";
 export default function Page() {
-    return <LoginForm />;
+    return <SignupForm />;
 }

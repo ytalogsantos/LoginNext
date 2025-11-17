@@ -1,4 +1,3 @@
-export const runtime = "nodejs";
 import { NextResponse } from "next/server";
 import connectDb from "@/lib/DbConnection";
 import User from "@/models/User";
@@ -13,7 +12,7 @@ export async function POST(req) {
 
         if (!email || !password) {
             return NextResponse.json(
-                { message: "Missing email or password" },
+                { message: "Preencha todos os campos." },
                 { status: 400 }
             );
         }
@@ -42,7 +41,7 @@ export async function POST(req) {
     } catch (err) {
         console.log(err);
         return NextResponse.json(
-            { message: "Internal server error" },
+            { message: "Erro durante o login.", erro: err },
             { status: 500 }
         );
     }
