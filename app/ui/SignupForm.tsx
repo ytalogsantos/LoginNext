@@ -19,15 +19,20 @@ export default function SignupForm() {
             body: JSON.stringify({username, email, password})
         });
 
-        const data = await res.json();
+        const responseData = await res.json();
 
         if(!res.ok) {
-            alert(data.message);
+            alert(responseData.message);
             return;
         }
 
         window.location.href = "/home";
         
+    }
+
+    async function cancelButton(event: React.MouseEvent<HTMLButtonElement>) {
+        event.preventDefault();
+        window.location.href = "/login";
     }
 
     return (
@@ -48,7 +53,7 @@ export default function SignupForm() {
                     <input type="password" name="password" id="password-input" required placeholder="********" className={montserrat.className} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
                 <div>
-                    <button className={montserrat.className}>Cancel</button>
+                    <button className={montserrat.className} onClick={cancelButton}>Cancel</button>
                     <button type="submit" className={montserrat.className}>Create account</button>
                 </div>
 

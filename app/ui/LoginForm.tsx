@@ -29,6 +29,11 @@ export default function LoginForm() {
         
     }
 
+    async function createAccount(event: React.MouseEvent<HTMLButtonElement>) {
+        event.preventDefault();
+        window.location.href = "/signup";
+    }
+
     return (
         <>
         <div className={styles.loginForm}>
@@ -45,7 +50,7 @@ export default function LoginForm() {
                 <div>
                     <button type="submit" className={montserrat.className}>Log in</button>
                     <button className={montserrat.className}>Forget password?</button>
-                    <button className={montserrat.className}>Sign up</button>
+                    <button className={montserrat.className} onClick={createAccount}>Sign up</button>
                 </div>
 
             </form>
