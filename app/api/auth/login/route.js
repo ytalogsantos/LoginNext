@@ -21,14 +21,14 @@ export async function POST(req) {
 
         if (!foundUser) {
             return NextResponse.json(
-                { message: `User not found` },
+                { message: `Usuário não encontrado.` },
                 { status: 404 }
             );
         }
 
         if (foundUser.password !== password) {
             return NextResponse.json(
-                { message: "Invalid password" },
+                { message: "Senha incorreta." },
                 { status: 401 }
             );
         }
