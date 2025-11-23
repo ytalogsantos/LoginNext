@@ -1,8 +1,9 @@
 :root {
-    --primary-white: #ffffff;
+    --primary-white: rgba(255, 255, 255, 0.297);
+    --secondary-white: rgba(255, 255, 255, 0.806);
     --primary-red: #dc1010;
-    --primary-purple: #783EC3;
-    --secondary-purple: #4D277E;
+    --primary-purple: rgba(63, 28, 109, 0.509);
+    --secondary-purple: rgba(36, 14, 66, 0.854);
     --primary-blue: #5450CA;
     --secondary-blue: #3733AA;
     --primary-black: #0A1015;
@@ -11,24 +12,26 @@
     color: var(--primary-black);
 }
 .loginForm {
-    height: 80vh;
+    height: 60vh;
+    width:30vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
 }
 
 .loginForm form {
     display: flex;
     flex-direction: column;
-    width: 30%;
     gap: 24px;
+    border: 1px solid var(--primary-white);
+    padding: 8%;
+    background-color: var(--primary-white);
+    backdrop-filter: blur(40px);
+    border-radius: 8px;
+    width: 75%;
 }
 
-.loginForm form div {
-    width: 100%;
-}
 
 .loginForm form > div:has(button) {
     display: flex;
@@ -40,18 +43,12 @@
 .loginForm input {
     background-color: transparent;
     width: 100%;
-    height: 45px;
+    height: 80%;
     border: 1px solid var(--primary-white);
     border-radius: 10px;
     font-size: 16px;
     padding-left: 1%;
-    color: var(--primary-white);
-}
-
-.loginForm form > div:has(label) {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    color: var(--secondary-white);
 }
 
 .loginForm input:focus {
@@ -61,13 +58,25 @@
 }
 
 .loginForm button {
-    border: 2px solid var(--secondary-purple);
-    background-color: var(--secondary-purple);
+    border: 1px solid var(--secondary-purple);
+    background-color: var(--primary-white);
     padding: 2%;
     border-radius: 24px;
+    width: 60%;
 }
 .loginForm button:hover {
-    border: 1px solid var(--primary-purple)   ;
-    background-color: var(--primary-white);
-    color: var(--primary-purple);
+    border: 1px solid var(--primary-white)   ;
+    background-color: var(--primary-purple);
+    color: var(--secondary-white);
+}
+
+.loginForm div:has(img) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+
+.loginForm img {
+    width: 15%;
 }

@@ -1,9 +1,13 @@
 import "./globals.css";
-import { Montserrat } from 'next/font/google';
+import { Montserrat, Tiny5 } from 'next/font/google';
 
 export const montserrat = Montserrat({
   subsets: ["latin"],
 })
+
+export const tiny5 = Tiny5({
+  weight: "400"
+});
 
 export default function RootLayout({
   children,

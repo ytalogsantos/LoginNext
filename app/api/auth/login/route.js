@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import connectDb from "@/lib/DbConnection";
+import connectDb from "@/config/DbConnection";
 import User from "@/models/User";
 
 
